@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TechStore - Modern E-Commerce</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f5f5;
+color:#222;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+img{
+width:100%;
+display:block;
+}
+
+button{
+cursor:pointer;
+border:none;
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+z-index:999;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav li{
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+nav li:hover{
+color:#2563eb;
+}
+
+.icons{
+display:flex;
+align-items:center;
+gap:20px;
+font-size:20px;
+}
+
+.cart-btn{
+position:relative;
+cursor:pointer;
+}
+
+#cartCount{
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+color:white;
+font-size:12px;
+padding:2px 7px;
+border-radius:50%;
+}
+
+.darkBtn{
+padding:8px 15px;
+background:#111;
+color:white;
+border-radius:6px;
+}
+
+/* HERO */
+
+.hero{
+
+margin-top:85px;
+
+height:85vh;
+
+display:flex;
+
+align-items:center;
+
+background:linear-gradient(135deg,#2563eb,#60a5fa);
+
+color:white;
+
+}
+
+.hero-content{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+align-items:center;
+
+gap:50px;
+
+}
+
+.hero h1{
+
+font-size:60px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+line-height:1.7;
+
+margin-bottom:30px;
+
+}
+
+.hero button{
+
+padding:15px 40px;
+
+font-size:18px;
+
+background:#f97316;
+
+color:white;
+
+border-radius:8px;
+
+transition:.3s;
+
+}
+
+.hero button:hover{
+
+transform:scale(1.05);
+
+}
+
+.hero img{
+
+animation:float 3s infinite ease-in-out;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+
+50%{transform:translateY(-15px);}
+
+100%{transform:translateY(0);}
+
+}
+
+/* FEATURES */
+
+.features{
+
+padding:70px 0;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+}
+
+.feature{
+
+background:white;
+
+padding:30px;
+
+text-align:center;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+transition:.3s;
+
+}
+
+.feature:hover{
+
+transform:translateY(-8px);
+
+}
+
+.feature h2{
+
+font-size:45px;
+
+margin-bottom:15px;
+
+}
+
+/* SECTION */
+
+section{
+
+padding:70px 0;
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:50px;
+
+}
+
+/* SEARCH */
+
+.search-box{
+
+display:flex;
+
+justify-content:center;
+
+margin-bottom:30px;
+
+}
+
+.search-box input{
+
+width:400px;
+
+padding:15px;
+
+font-size:17px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+}
+
+/* FILTERS */
+
+.filters{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin-bottom:40px;
+
+flex-wrap:wrap;
+
+}
+
+.filters button{
+
+padding:12px 22px;
+
+background:white;
+
+border-radius:8px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+
+}
+
+.filters button.active{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+/* PRODUCTS */
+
+.products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card img{
+
+height:220px;
+
+object-fit:cover;
+
+}
+
+.card-body{
+
+padding:20px;
+
+}
+
+.price{
+
+font-size:24px;
+
+color:#2563eb;
+
+margin:10px 0;
+
+}
+
+.rating{
+
+color:orange;
+
+margin-bottom:10px;
+
+}
+
+.card button{
+
+width:100%;
+
+padding:12px;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:8px;
+
+}
+
+/* CART */
+
+.cart{
+
+position:fixed;
+
+top:0;
+
+right:-420px;
+
+width:400px;
+
+height:100%;
+
+background:white;
+
+box-shadow:-5px 0 15px rgba(0,0,0,.2);
+
+transition:.4s;
+
+z-index:1000;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.cart.active{
+
+right:0;
+
+}
+
+.cart-header{
+
+padding:20px;
+
+background:#2563eb;
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.cart-items{
+
+flex:1;
+
+overflow:auto;
+
+padding:20px;
+
+}
+
+.cart-item{
+
+display:flex;
+
+gap:15px;
+
+margin-bottom:20px;
+
+}
+
+.cart-item img{
+
+width:80px;
+
+height:80px;
+
+object-fit:cover;
+
+border-radius:8px;
+
+}
+
+.qty{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+margin-top:10px;
+
+}
+
+.qty button{
+
+padding:4px 10px;
+
+background:#ddd;
+
+}
+
+.cart-footer{
+
+padding:20px;
+
+border-top:1px solid #ddd;
+
+}
+
+.checkout{
+
+width:100%;
+
+padding:15px;
+
+background:#22c55e;
+
+color:white;
+
+font-size:18px;
+
+border-radius:8px;
+
+}
+
+/* ABOUT */
+
+.about{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:50px;
+
+align-items:center;
+
+}
+
+.about img{
+
+border-radius:15px;
+
+}
+
+.about h2{
+
+font-size:40px;
+
+margin-bottom:20px;
+
+}
+
+.about p{
+
+line-height:1.8;
+
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+}
+
+.review{
+
+background:white;
+
+padding:30px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+/* CONTACT */
+
+.contact{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
+
+}
+
+.contact input,
+
+.contact textarea{
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:15px;
+
+border:1px solid #ddd;
+
+border-radius:8px;
+
+}
+
+.contact button{
+
+padding:15px 30px;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:8px;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:#111;
+
+color:white;
+
+padding:50px 0;
+
+text-align:center;
+
+margin-top:50px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content,
+
+.about,
+
+.contact{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:40px;
+
+}
+
+.features{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+.cart{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">TechStore</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#products">Products</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="icons">
+
+<button class="darkBtn">🌙</button>
+
+<div class="cart-btn">
+
+🛒
+
+<span id="cartCount">0</span>
+
+</div>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container hero-content">
+
+<div>
+
+<h1>Next Generation Electronics</h1>
+
+<p>
+Discover premium laptops, smartphones, smartwatches, gaming accessories and more.
+Shop with confidence and enjoy fast delivery, secure payments and amazing discounts.
+</p>
+
+<button onclick="document.getElementById('products').scrollIntoView()">
+Shop Now
+</button>
+
+</div>
+
+<div>
+
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700" alt="Hero">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<div class="container">
+
+<div class="features">
+
+<div class="feature">
+<h2>🚚</h2>
+<h3>Free Shipping</h3>
+<p>Free delivery on every order.</p>
+</div>
+
+<div class="feature">
+<h2>💳</h2>
+<h3>Secure Payment</h3>
+<p>100% secure checkout.</p>
+</div>
+
+<div class="feature">
+<h2>🔄</h2>
+<h3>Easy Returns</h3>
+<p>30 days replacement.</p>
+</div>
+
+<div class="feature">
+<h2>⭐</h2>
+<h3>Premium Quality</h3>
+<p>Only trusted brands.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<section id="products">
+
+<div class="container">
+
+<h1 class="title">Featured Products</h1>
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="Search Products...">
+
+</div>
+
+<div class="filters">
+
+<button class="filter active" data-category="All">All</button>
+<button class="filter" data-category="Laptop">Laptop</button>
+<button class="filter" data-category="Phone">Phone</button>
+<button class="filter" data-category="Watch">Watch</button>
+<button class="filter" data-category="Accessory">Accessory</button>
+
+</div>
+
+<div class="products" id="productContainer">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container about">
+
+<div>
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900">
+
+</div>
+
+<div>
+
+<h2>About TechStore</h2>
+
+<p>
+
+TechStore is a modern electronics marketplace built to provide customers with
+high-quality gadgets at competitive prices.
+
+Our mission is to make technology accessible to everyone through affordable prices,
+fast delivery, secure transactions, and exceptional customer service.
+
+This website is completely static and demonstrates how a real e-commerce website
+looks before adding a backend.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section>
+
+<div class="container">
+
+<h1 class="title">Happy Customers</h1>
+
+<div class="testimonials">
+
+<div class="review">
+
+⭐⭐⭐⭐⭐
+
+<h3>Ali Khan</h3>
+
+<p>
+
+Amazing website!
+The products look premium and the shopping experience is smooth.
+
+</p>
+
+</div>
+
+<div class="review">
+
+⭐⭐⭐⭐⭐
+
+<h3>Ahmed</h3>
+
+<p>
+
+Beautiful design.
+Fast checkout and responsive layout.
+
+</p>
+
+</div>
+
+<div class="review">
+
+⭐⭐⭐⭐⭐
+
+<h3>Fatima</h3>
+
+<p>
+
+Loved the interface.
+Looks like a professional online store.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<h1 class="title">Contact Us</h1>
+
+<div class="contact">
+
+<div>
+
+<h2>Get in Touch</h2>
+
+<p>
+
+📍 Pakistan
+
+</p>
+
+<p>
+
+📞 +92 300 1234567
+
+</p>
+
+<p>
+
+✉ info@techstore.com
+
+</p>
+
+</div>
+
+<div>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Email">
+
+<textarea rows="7" placeholder="Message"></textarea>
+
+<button>Send Message</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>TechStore</h2>
+
+<br>
+
+<p>
+
+© 2026 TechStore
+
+</p>
+
+<p>
+
+Built using HTML, CSS and JavaScript only.
+
+</p>
+
+</footer>
+
+<!-- CART -->
+
+<div class="cart">
+
+<div class="cart-header">
+
+<h2>Shopping Cart</h2>
+
+<button id="closeCart">✖</button>
+
+</div>
+
+<div class="cart-items" id="cartItems">
+
+</div>
+
+<div class="cart-footer">
+
+<h3>
+
+Total:
+$<span id="total">0</span>
+
+</h3>
+
+<br>
+
+<button class="checkout">
+
+Checkout
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const products=[
+
+{id:1,name:"Gaming Laptop",category:"Laptop",price:1200,image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"},
+
+{id:2,name:"Business Laptop",category:"Laptop",price:950,image:"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=600"},
+
+{id:3,name:"MacBook Style",category:"Laptop",price:1800,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"},
+
+{id:4,name:"Android Phone",category:"Phone",price:699,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"},
+
+{id:5,name:"Premium Smartphone",category:"Phone",price:999,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600"},
+
+{id:6,name:"Budget Phone",category:"Phone",price:399,image:"https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600"},
+
+{id:7,name:"Smart Watch",category:"Watch",price:250,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+
+{id:8,name:"Luxury Watch",category:"Watch",price:450,image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600"},
+
+{id:9,name:"Wireless Headphones",category:"Accessory",price:120,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"},
+
+{id:10,name:"Gaming Mouse",category:"Accessory",price:60,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=600"},
+
+{id:11,name:"Mechanical Keyboard",category:"Accessory",price:150,image:"https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=600"},
+
+{id:12,name:"Bluetooth Speaker",category:"Accessory",price:90,image:"https://images.unsplash.com/photo-1589003077984-894e133dabab?w=600"}
+
+];
